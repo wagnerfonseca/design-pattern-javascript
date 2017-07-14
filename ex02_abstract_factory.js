@@ -21,6 +21,11 @@ var abstractVehicleFactory = (function () {
     getVehicle: function(type, customizations) {
       var Vehicle = types[type]
 
+      // only register classes that fulfill the vehicle contract
+      // if ( proto.drive && proto.breakDown ) {
+      //     types[type] = Vehicle;
+      // }
+
       return (Vehicle ? new Vehicle(customizations) : null)
     },
 

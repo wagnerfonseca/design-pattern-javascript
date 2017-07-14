@@ -1,36 +1,32 @@
-var Factories = (function(){
-  
-  function Factories() {
-    this.types = {}
-  }
-
-  Factories.prototype.registerEntity = function( type, source ) {
-    var proto = source.prototype
-    this.types[type] = source
-  }
-
-  Factories.prototype.getEntity = function( type, data ) {
-    var source = this.types[type]
-    return (source ? new source(data) : null)
-  }
-
-  return Factories
-
-})()
-
 var People = function(data) {
-  this.name = data.name
-  this.lastName = data.lastname
+  this.name = data.name || null
+  this.lastName = data.lastName || null
 }
 
-var factory = new Factories()
-factory.registerEntity( 'myObj', People )
+var factory1 = require('./factories')
+var factory2 = require('./factories')
 
-var person = factory.getEntity(
+factory1.registerEntity( 'myObj', People )
+
+var person = factory1.createEntity(
   'myObj',
   {
-    name: 'John Doe'
+    name: 'John'
   }
 )
 
 console.log(person)
+
+
+function Car(options) {
+  this.doors = options.doors >>> 0
+  this.brand = options.brand || 'Brand new'
+  this.color = options.color || 'unknow'  
+  this.state = options.state || 'unknow'
+}
+
+var gol = factory2.createEntity( 'gol', { doors: 4, color: 'blue', brand: 'VW', state: 'used' },  Car)
+console.log(gol)
+
+var chevy = factory2.createEntity( 'chevy', { doors: 2, color: 'brown', brand: 'Chevrolet' }, Car)
+console.log(chevy)
