@@ -3,8 +3,8 @@ var People = function(data) {
   this.lastName = data.lastName || null
 }
 
-var factory1 = require('./factories')
-var factory2 = require('./factories')
+var factory1 = require('./builder')
+var factory2 = require('./builder')
 
 factory1.registerEntity( 'myObj', People )
 
@@ -25,8 +25,8 @@ function Car(options) {
   this.state = options.state || 'unknow'
 }
 
-var gol = factory2.createEntity( 'gol', { doors: 4, color: 'blue', brand: 'VW', state: 'used' },  Car)
+var gol = factory2.createEntity( 1, { doors: 4, color: 'blue', brand: 'VW', state: 'used' },  Car)
 console.log(gol)
 
-var chevy = factory2.createEntity( 'chevy', { doors: 2, color: 'brown', brand: 'Chevrolet' }, Car)
+var chevy = factory2.createEntity( 2, { doors: 2, color: 'brown', brand: 'Chevrolet' }, Car)
 console.log(chevy)
