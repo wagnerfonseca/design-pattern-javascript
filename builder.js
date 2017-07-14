@@ -6,7 +6,7 @@ var Builder = (function(){
 
   Builder.prototype.registerEntity = function( id, typeSource ) {
     // util para determinar regras para registrar a classe
-    //var proto = typeSource.prototype 
+    var proto = typeSource.prototype    
     this.types[id] = typeSource    
   }
 

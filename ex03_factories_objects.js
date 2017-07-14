@@ -28,5 +28,6 @@ function Car(options) {
 var gol = factory2.createEntity( 1, { doors: 4, color: 'blue', brand: 'VW', state: 'used' },  Car)
 console.log(gol)
 
+
 var chevy = factory2.createEntity( 2, { doors: 2, color: 'brown', brand: 'Chevrolet' }, Car)
 console.log(chevy)
